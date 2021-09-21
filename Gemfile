@@ -27,14 +27,16 @@ gem 'jbuilder', '~> 2.5'
 # gem 'bcrypt', '~> 3.1.7'
 
 # Bootstrap 
-gem 'bootstrap-sass', '~> 3.3.6'
-gem 'sassc-rails', '2.1.0'
+gem 'bootstrap', '~> 5.1.0'
+# gem 'bootstrap-sass', '~> 3.3.6'
+# gem 'sassc-rails', '2.1.0'
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'
 gem 'jquery-rails'
 
+
 # Use Capistrano for deployment
-# gem 'capistrano-rails', group: :development
+ gem 'capistrano-rails', group: :development
 
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.1.0', require: false
