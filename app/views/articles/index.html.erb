@@ -2,46 +2,44 @@
 
 <h1>Articles</h1>
 
-<div class="container">
+<div class="container-fluid">
   <% @articles.each do |article| %>
-  <main class="grid">
-    <article>
-      <%= image_tag("book.jpg", class:"img-fluid") %>
-      <div class="text">
-        <h3><%= article.title %></h3>
-        <h4><%= article.author %></h4>
-        <h5><%= article.published_on %></h5>
-        <!-- <p></p> -->
-        <!-- <button type="button" class="btn btn-danger">Read More</button> -->
-        <!-- Button trigger modal -->
-        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">Read More</button>
-      </div><!-- text ends -->
-      <%= link_to 'Show', article %>
-      <%= link_to 'Edit', edit_article_path(article) %>
-      <%= link_to 'Destroy', article, method: :delete, data: { confirm: 'Are you sure?' } %>
-    </article>
-    <!-- Modal -->
-    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel"><%= article.title %></h5>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-          </div>
-          <div class="modal-body">
-            <%= article.body %>
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+    <main class="grid">
+      <article>
+        <%= image_tag("book.jpg", class:"img-fluid") %>
+        <div class="text">
+          <h3><%= article.title %></h3>
+          <h4><%= article.author %></h4>
+          <h5><%= article.published_on %></h5>
+          <button class="btn btn-primary" data-bs-target="#exampleModal" data-bs-toggle="modal" id="<%= article.id %>" type="button">Read More</button>
+        </div><!-- text ends -->
+        <%= link_to 'Show', article %>
+        <%= link_to 'Edit', edit_article_path(article) %>
+        <%= link_to 'Destroy', article, method: :delete, data: { confirm: 'Are you sure?' } %>
+      </article>
+    
+      <!-- Modal -->
+      <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel"><%= article.title %></h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <%= article.body %>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            </div>
           </div>
         </div>
       </div>
-    </div>
-    </div>
-  </main>
+      </div>
+    </main>
 
 
-<% end %>
+  <% end %>
 
 
 <%= link_to 'New Article', new_article_path , id:"newart" %>

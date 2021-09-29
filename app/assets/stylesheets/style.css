@@ -1,26 +1,28 @@
 /* Main page styling */
 
-/*body {
-  background-image: url('back.jpg');
+body {
+  background-color: #262625;
+  /*background-image: url('back.jpg');
   background-repeat: no-repeat;
   background-attachment: fixed;
-  background-size: cover;
-}*/
+  background-size: cover;*/
+}
 
 /* Add a black background color to the top navigation */
 .topnav {
-  /*background-color: #333;*/
+  background-color: #8a0322;
   overflow: hidden;
+  width:100%;
 }
 
 /* Style the links inside the navigation bar */
 .topnav a {
   float: left;
-  color: #a61e07;
+  color: ghostwhite;
   text-align: center;
   padding: 14px 16px;
   text-decoration: none;
-  font-size: 17px;
+  font-size: 22px;
 }
 
 /* Change the color of links on hover */
@@ -36,12 +38,7 @@
 }
 
 h1{
-  color: red;
-
-}
-
-th{
-  color: green;
+  color: #e3e3de;
 }
 
 #navright{
@@ -119,5 +116,81 @@ th{
 
 #newart{
   margin-left: 108px;
+}
+
+/*About page styling*/
+
+#about h1{
+  margin: 50px 0 15px 0;
+}
+#about p{
+  color: white;
+  font-size: 15px;
+}
+
+/*Home page styling*/
+
+.wrap-content{
+  position: relative;
+  column-count: 4;
+  padding: 20px;
+}
+
+.pics{
+  display: inline-block;
+  margin-bottom: 10px;
+  overflow: hidden;
+}
+
+.pic-det{
+  width: 100%;
+  transition: 0.25s ease-in-out;
+}
+
+@media screen and (max-width: 768px){
+  .wrap-content{
+    column-count: 3;
+  }
+}
+
+@media screen and (max-width: 425px){
+  .wrap-content{
+    column-count: 2;
+  }
+}
+
+@media screen and (max-width: 375px){
+  .wrap-content{
+    column-count: 1;
+  }
+}
+
+#homepg{
+  padding: 10px;
+  margin: 20px;
+  font-size: 15px;
+  color: white;
+}
+
+.homepg-top h1{
+  margin: 25px;
+}
+
+ /*FAQ page styling */
+
+.faqtop h2{
+  color: white;
+}
+
+.faqtop p{
+  color: white;
+}
+
+.faqtop {
+  margin: 40px;
+}
+
+.faqtop h1{
+  margin: 50px 0;
 }
 

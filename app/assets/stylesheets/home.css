@@ -1,0 +1,46 @@
+.wrap-content{
+  position: relative;
+  column-count: 4;
+  padding: 20px;
+}
+
+.pics{
+  display: inline-block;
+  margin-bottom: 10px;
+  overflow: hidden;
+}
+
+.pic-det{
+  border-radius: 15px;
+  width: 100%;
+  transition: 0.25s ease-in-out;
+}
+
+@media screen and (max-width: 768px){
+  .wrap-content{
+    column-count: 3;
+  }
+}
+
+@media screen and (max-width: 425px){
+  .wrap-content{
+    column-count: 2;
+  }
+}
+
+@media screen and (max-width: 375px){
+  .wrap-content{
+    column-count: 1;
+  }
+}
+
+#homepg{
+  padding: 10px;
+  margin: 20px;
+  font-size: 15px;
+  color: white;
+}
+
+.homepg-top h1{
+  margin: 25px;
+}
