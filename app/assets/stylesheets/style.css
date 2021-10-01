@@ -1,55 +1,214 @@
 /* Main page styling */
 
+@import url('https://fonts.googleapis.com/css?family=Work+Sans:300,600');
+
+:root {
+  --background: rgba(138, 3, 34, .85);
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
 body {
-  background-color: #262625;
-  /*background-image: url('back.jpg');
-  background-repeat: no-repeat;
-  background-attachment: fixed;
-  background-size: cover;*/
+  margin: 0;
+  background: #222;
+  font-family: 'Work Sans', sans-serif;
+  font-weight: 400;
 }
 
-/* Add a black background color to the top navigation */
-.topnav {
-  background-color: #8a0322;
-  overflow: hidden;
-  width:100%;
+.content {
+  height: 200vh;
+  background-image: url(//unsplash.it/1000/1000);
+  background-color: #333;
+  background-blend-mode: multiply;
+  background-size: cover;
+  display: grid;
+  place-items: center;
 }
 
-/* Style the links inside the navigation bar */
-.topnav a {
-  float: left;
-  color: ghostwhite;
+/* navigation styles start here */
+
+header {
+  color: white;
+  background: var(--background);
   text-align: center;
-  padding: 14px 16px;
+  position: fixed;
+  z-index: 999;
+  width: 100%;
+}
+
+/* changed this from the tutorial video to
+   allow it to gain focus, making it tabbable */
+.nav-toggle {
+  position: absolute !important;
+  top: -9999px !important;
+  left: -9999px !important;
+}
+
+.nav-toggle:focus ~ .nav-toggle-label {
+  outline: 3px solid rgba(lightblue, .75);
+}
+
+.nav-toggle-label {
+  position: absolute;
+  top: 0;
+  left: 0;
+  margin-left: 1em;
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.nav-toggle-label span,
+.nav-toggle-label span::before,
+.nav-toggle-label span::after {
+  display: block;
+  background: white;
+  height: 2px;
+  width: 2em;
+  border-radius: 2px;
+  position: relative;
+}
+
+.nav-toggle-label span::before,
+.nav-toggle-label span::after {
+  content: '';
+  position: absolute;
+}
+
+.nav-toggle-label span::before {
+  bottom: 7px;
+}
+
+.nav-toggle-label span::after {
+  top: 7px;
+}
+
+nav {
+  position: absolute;
+  text-align: left;
+  top: 100%;
+  left: 0;
+  background: var(--background);
+  width: 100%;
+  transform: scale(1, 0);
+  transform-origin: top;
+  transition: transform 400ms ease-in-out;
+}
+
+nav ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+nav li {
+  margin-bottom: 1em;
+  margin-left: 1em;
+}
+
+nav a {
+  color: white;
   text-decoration: none;
-  font-size: 22px;
+  font-size: 1.2rem;
+  text-transform: uppercase;
+  opacity: 0;
+  transition: opacity 150ms ease-in-out;
 }
 
-/* Change the color of links on hover */
-.topnav a:hover {
-  background-color: #ddd;
-  color: black;
-}
-
-/* Add a color to the active/current link */
-.topnav a.active {
-  background-color: #04AA6D;
+nav a:hover {
   color: white;
 }
 
-h1{
-  color: #e3e3de;
+.nav-toggle:checked ~ nav {
+  transform: scale(1,1);
 }
 
-#navright{
-  float: right;
+.nav-toggle:checked ~ nav a {
+  opacity: 1;
+  transition: opacity 250ms ease-in-out 250ms;
 }
 
-/*st yling for the articles*/
+@media screen and (min-width: 800px) {
+  .nav-toggle-label {
+    display: none;
+  }
+
+  header {
+    display: grid;
+    grid-template-columns: 1fr auto minmax(600px, 3fr) 1fr;
+  }
+  
+  .logo {
+    grid-column: 2 / 3;
+  }
+  
+  nav {
+     /* this causes issues with Edge, since it's unsupported */
+    
+    /* the following lines are not from my video, but add Edge support */
+    position: relative;
+    text-align: left;
+    transition: none;
+    transform: scale(1,1);
+    background: none;
+    top: initial;
+    left: initial;
+    /* end Edge support stuff */
+    
+    grid-column: 3 / 4;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+  }
+  
+  nav ul {
+    display: flex;
+  }
+  
+  nav li {
+    margin-left: 3em;
+    margin-bottom: 0;
+  }
+  
+  nav a {
+    opacity: 1;
+    position: relative;
+  }
+  
+  nav a::before {
+    content: '';
+    display: block;
+    height: 5px;
+    background: black;
+    position: absolute;
+    top: -.75em;
+    left: 0;
+    right: 0;
+    transform: scale(0, 1);
+    transition: transform ease-in-out 250ms;
+  }
+  
+  nav a:hover::before {
+    transform: scale(1,1);
+  }
+}
+
+
+
+
+
+
+
+
+
+
+/*styling for the articles*/
 
 .grid{
   margin: 80px;
-  display: inline-flex ;
+  display:inline-grid;
   grid-template-columns: repeat(3,1fr);
   grid-gap: 30px;
   align-items: center;
@@ -130,51 +289,7 @@ h1{
 
 /*Home page styling*/
 
-.wrap-content{
-  position: relative;
-  column-count: 4;
-  padding: 20px;
-}
 
-.pics{
-  display: inline-block;
-  margin-bottom: 10px;
-  overflow: hidden;
-}
-
-.pic-det{
-  width: 100%;
-  transition: 0.25s ease-in-out;
-}
-
-@media screen and (max-width: 768px){
-  .wrap-content{
-    column-count: 3;
-  }
-}
-
-@media screen and (max-width: 425px){
-  .wrap-content{
-    column-count: 2;
-  }
-}
-
-@media screen and (max-width: 375px){
-  .wrap-content{
-    column-count: 1;
-  }
-}
-
-#homepg{
-  padding: 10px;
-  margin: 20px;
-  font-size: 15px;
-  color: white;
-}
-
-.homepg-top h1{
-  margin: 25px;
-}
 
  /*FAQ page styling */
 
