@@ -11,35 +11,57 @@
           <h3><%= article.title %></h3>
           <h4><%= article.author %></h4>
           <h5><%= article.published_on %></h5>
-          <button class="btn btn-primary" data-bs-target="#exampleModal" data-bs-toggle="modal" id="<%= article.id %>" type="button">Read More</button>
+          <p class="textControl"><%= article.body %></p>        
+          <div class="textControl" style='display:none;'><%= truncate = '(article.body, length:15)' %></div>
+          <div class="textControl" style='display:none;'><%= article.body %></div>
         </div><!-- text ends -->
         <%= link_to 'Show', article %>
         <%= link_to 'Edit', edit_article_path(article) %>
         <%= link_to 'Destroy', article, method: :delete, data: { confirm: 'Are you sure?' } %>
-      </article>
-    
-      <!-- Modal -->
-      <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title" id="exampleModalLabel"><%= article.title %></h5>
-              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body" id="myModalBody">
-              <%= article.body %>
-            </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-            </div>
-          </div>
-        </div>
-      </div>
+      </article> 
     </main>
-  </div>
-
-
   <% end %>
+</div>
+
+<script>
+  $(document).ready(function() {
+    // Configure/customize these variables.
+    var showChar = 15;  // How many characters are shown by default
+    var ellipsestext = "...";
+    var moretext = "Read more";
+    var lesstext = "Read less";
+    
+
+    $('.textControl').each(function() {
+        var content = $(this).html();
+ 
+        if(content.length > showChar) {
+ 
+            var c = content.substr(0, showChar);
+            var h = content.substr(showChar, content.length - showChar);
+ 
+            var html = c + '<span class="moreellipses">' + ellipsestext+ '&nbsp;</span><span class="morecontent"><span>' + h + '</span>&nbsp;&nbsp;<a href="" class="morelink">' + moretext + '</a></span>';
+ 
+            $(this).html(html);
+        }
+    });
+ 
+    $(".morelink").click(function(){
+        if($(this).hasClass("less")) {
+            $(this).removeClass("less");
+            $(this).html(moretext);
+        } else {
+            $(this).addClass("less");
+            $(this).html(lesstext);
+        }
+        $(this).parent().prev().toggle();
+        $(this).prev().toggle();
+        return false;
+    });
+});
+</script>
+
+
 
 
 <%= link_to 'New Article', new_article_path , id:"newart" %>
