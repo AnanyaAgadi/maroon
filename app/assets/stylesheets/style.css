@@ -281,6 +281,10 @@ a.morelink {
 
 /*About page styling*/
 
+#about{
+  padding: 40px 0 0 20px;
+  color: white;
+}
 #about h1{
   margin: 50px 0 15px 0;
 }
@@ -289,6 +293,9 @@ a.morelink {
   font-size: 15px;
 }
 
+#about-quote{
+  font-size: 25px;
+}
 
 
 /*Home page styling*/
