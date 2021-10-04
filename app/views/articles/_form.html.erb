@@ -1,3 +1,5 @@
+
+<div class="form-data">
 <%= form_with(model: article, local: true) do |form| %>
   <% if article.errors.any? %>
     <div id="error_explanation">
@@ -13,30 +15,36 @@
 
   <div class="field">
     <%= form.label :title %>
-    <%= form.text_field :title %>
+    <%= form.text_field :title ,class:"field-area" %>
   </div>
 
   <div class="field">
     <%= form.label :author %>
-    <%= form.text_field :author %>
+    <%= form.text_field :author ,class:"field-area" %>
   </div>
 
   <div class="field">
     <%= form.label :body %>
-    <%= form.text_area :body %>
+    <%= form.text_area :body ,class:"field-area" %>
   </div>
 
   <div class="field">
     <%= form.label :published_on %>
-    <%= form.date_select :published_on %>
+    <%= form.date_select :published_on ,class:"field-area" %>
   </div>
 
   <div class="field">
     <%= form.label :image_url %>
-    <%= form.text_field :image_url %>
+    <%= form.text_field :image_url ,class:"field-area" %>
+  </div>
+
+  <div class="field">
+    <%= form.label :images %>
+    <%= form.file_field :images, multiple: true ,class:"field-area" %>
   </div>
 
   <div class="actions">
     <%= form.submit %>
   </div>
+</div>
 <% end %>
