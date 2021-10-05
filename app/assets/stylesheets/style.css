@@ -1,4 +1,7 @@
-  /*new article Form styling*/
+/*Home page styling in home.css*/
+
+
+/*new article Form styling*/
 
   .field{
     color: white;
@@ -312,6 +315,13 @@
   #about{ 
     padding: 40px 0 0 20px;
     color: white;
+    background-image: url("maroon5.jpg");
+    height: 1116px;
+    background-position: top;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+    
   }
   #about h1{
     margin: 50px 0 15px 0;
@@ -324,13 +334,21 @@
   #about-quote{
     font-size: 25px;
   }
+  
+  .row{
+    float: left;
+    padding: 0 10px 0 10px;
+    width: 50%;
+  }
 
-
-  /*Home page styling*/
-
-
-
-   /*FAQ page styling */
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+  
+/*FAQ page styling */
 
   .faqtop h2{
     color: white;
@@ -340,13 +358,7 @@
     color: white;
   }
 
-  .faqtop {
-    margin: 40px;
-  }
-
-  .faqtop h1{
-    margin: 50px 0;
-  }
+ 
 
   /*Contact Page styling*/
 
